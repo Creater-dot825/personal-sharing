@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown 语法使用说明 - 网络知识库</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html">网络知识库</a>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#software" class="nav-link">软件学习</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#knowledge" class="nav-link active">相关知识</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#literature" class="nav-link">文献总结</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#practice" class="nav-link">实践指南</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">关于</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link">联系</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <div class="theme-toggle">
+                    <button id="themeBtn" aria-label="切换主题">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 文章内容 -->
+    <main class="main-content">
+        <article class="article-full">
+            <div class="article-header">
+                <div class="article-meta">
+                    <span class="article-category">相关知识</span>
+                    <span class="article-date">2026-03-30</span>
+                    <span class="article-read-time">25 分钟阅读</span>
+                </div>
+                <h1 class="article-title">Markdown 语法使用说明</h1>
+                <p class="article-subtitle">详细介绍 Markdown 语法的各种使用方法，包括标题、段落、文字格式、列表、表格、代码块等。</p>
+                <div class="article-author">
+                    <div class="author-info">
+                        <div class="author-avatar">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="author-details">
+                            <span class="author-name">网络知识库</span>
+                            <span class="author-role">网络技术学习平台</span>
+                        </div>
+                    </div>
+                    <div class="article-actions">
+                        <button class="action-btn" title="分享">
+                            <i class="fas fa-share-alt"></i>
+                        </button>
+                        <button class="action-btn" title="收藏">
+                            <i class="far fa-bookmark"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-content">
+                <h2>一、标题</h2>
+                <p>Markdown 支持 6 级标题，使用 <code>#</code> 符号表示，# 数量对应标题级别。</p>
+                <pre><code># 一级标题
+## 二级标题
+### 三级标题
+#### 四级标题
+##### 五级标题
+###### 六级标题</code></pre>
+
+                <h3>快捷键</h3>
+                <ul>
+                    <li>Ctrl+数字 1~6：快速设置对应级别的标题</li>
+                    <li>Ctrl+0：设置为普通文本</li>
+                    <li>Ctrl+加号/减号：调整标题级别</li>
+                </ul>
+
+                <h2>二、段落</h2>
+
+                <h3>1. 换行</h3>
+                <p>在 Markdown 中，段落之间需要空一行。如果需要强制换行，可以在行尾添加两个空格或使用 <code>&lt;br&gt;</code> 标签。</p>
+
+                <h3>2. 分割线</h3>
+                <p>使用三个或更多的星号、减号或下划线来创建分割线：</p>
+                <pre><code>---
+***
+___</code></pre>
+
+                <h2>三、文字显示</h2>
+
+                <h3>1. 字体样式</h3>
+                <ul>
+                    <li><strong>粗体</strong>：使用 <code>**粗体**</code> 或 <code>__粗体__</code></li>
+                    <li><em>斜体</em>：使用 <code>*斜体*</code> 或 <code>_斜体_</code></li>
+                    <li><strong><em>粗斜体</em></strong>：使用 <code>***粗斜体***</code> 或 <code>___粗斜体___</code></li>
+                    <li><del>删除线</del>：使用 <code>~~删除线~~</code></li>
+                    <li><u>下划线</u>：使用 <code>&lt;u&gt;下划线&lt;/u&gt;</code></li>
+                    <li><mark>高亮</mark>：使用 <code>==高亮==</code></li>
+                </ul>
+
+                <h3>2. 上下标</h3>
+                <pre><code>x^2^  <!-- 上标 -->
+H~2~O  <!-- 下标 --></code></pre>
+                <p>效果：x<sup>2</sup> 和 H<sub>2</sub>O</p>
+
+                <h2>四、列表</h2>
+
+                <h3>1. 无序列表</h3>
+                <p>使用星号、加号或减号作为列表标记：</p>
+                <pre><code>* 第一项
+* 第二项
+* 第三项
+
++ 第一项
++ 第二项
++ 第三项
+
+- 第一项
+- 第二项
+- 第三项</code></pre>
+
+                <h3>2. 有序列表</h3>
+                <p>使用数字加英文句点：</p>
+                <pre><code>1. 第一项
+2. 第二项
+3. 第三项</code></pre>
+
+                <h3>3. 嵌套列表</h3>
+                <p>使用缩进表示嵌套关系：</p>
+                <pre><code>1. 第一项
+   * 子项 1
+   * 子项 2
+2. 第二项
+   1. 子项 1
+   2. 子项 2</code></pre>
+
+                <h3>4. 任务列表</h3>
+                <p>使用 <code>- [ ]</code> 表示未完成的任务，<code>- [x]</code> 表示已完成的任务：</p>
+                <pre><code>- [ ] 未完成任务
+- [x] 已完成任务</code></pre>
+
+                <h2>五、区块显示</h2>
+                <p>使用 <code>&gt;</code> 符号表示区块引用：</p>
+                <pre><code>> 这是一个区块引用
+>
+> > 嵌套区块引用</code></pre>
+
+                <h2>六、代码显示</h2>
+
+                <h3>1. 行内代码</h3>
+                <p>使用反引号包裹代码：</p>
+                <pre><code>`int a = 0;`</code></pre>
+
+                <h3>2. 代码块</h3>
+                <p>使用三个反引号包裹代码块，并可以指定语言：</p>
+                <pre><code>```javascript
+function hello() {
+    console.log("Hello, World!");
+}
+```</code></pre>
+
+                <h2>七、链接</h2>
+                <p>Markdown 支持两种链接方式：</p>
+                <pre><code>[链接文字](链接地址 "可选标题")
+
+&lt;链接地址&gt;</code></pre>
+
+                <h2>八、脚注</h2>
+                <p>使用脚注可以为文本添加注释或参考资料：</p>
+                <pre><code>这是一个技术[^1]
+
+[^1]: 这是一个非常好用的框架。</code></pre>
+
+                <h2>九、图片插入</h2>
+                <p>图片语法与链接类似，只是在前面多了一个感叹号：</p>
+                <pre><code>![图片描述](图片路径 "可选标题")</code></pre>
+
+                <h2>十、表格</h2>
+                <p>Markdown 支持简单的表格语法：</p>
+                <pre><code>| 表头 1 | 表头 2 | 表头 3 |
+| :--- | :---: | ---: |
+| 左对齐 | 居中 | 右对齐 |
+| 内容 1 | 内容 2 | 内容 3 |</code></pre>
+
+                <h2>十一、流程图</h2>
+                <p>使用 Mermaid 语法可以绘制流程图：</p>
+
+                <h3>1. 横向流程图</h3>
+                <pre><code>```mermaid
+graph LR
+A[方形]==>B(圆角)
+B==>C{条件a}
+C-->|a=1|D[结果1]
+C-->|a=2|E[结果2]
+F[横向流程图]
+```</code></pre>
+
+                <h3>2. 竖向流程图</h3>
+                <pre><code>```mermaid
+graph TD
+A[方形]==>B(圆角)
+B==>C{条件a}
+C-->|a=1|D[结果1]
+C-->|a=2|E[结果2]
+F[竖向流程图]
+```</code></pre>
+
+                <h2>十二、表情符号</h2>
+                <p>Markdown 支持表情符号：</p>
+                <pre><code>:happy:、:cry:、:man:</code></pre>
+
+                <h2>十三、数学公式</h2>
+                <p>使用 LaTeX 语法可以插入数学公式：</p>
+
+                <h3>1. 行中公式</h3>
+                <pre><code>$公式$</code></pre>
+
+                <h3>2. 独立公式</h3>
+                <pre><code>$$
+公式
+$$</code></pre>
+
+                <h3>常用公式示例</h3>
+                <ul>
+                    <li>分数：<code>$\frac{a}{b}$</code> → $\frac{a}{b}$</li>
+                    <li>开方：<code>$\sqrt{2}$</code> → $\sqrt{2}$</li>
+                    <li>积分：<code>$\int_{a}^{b} f(x) dx$</code> → $\int_{a}^{b} f(x) dx$</li>
+                    <li>求和：<code>$\sum_{i=1}^{n} i$</code> → $\sum_{i=1}^{n} i$</li>
+                    <li>极限：<code>$\lim_{x \to \infty} f(x)$</code> → $\lim_{x \to \infty} f(x)$</li>
+                </ul>
+
+                <h2>十四、支持的 HTML 元素</h2>
+                <p>Markdown 支持直接使用 HTML 标签：</p>
+                <ul>
+                    <li>文本居中：<code>&lt;center&gt;内容&lt;/center&gt;</code></li>
+                    <li>快捷键：<code>&lt;kbd&gt;Ctrl+C&lt;/kbd&gt;</code></li>
+                    <li>加粗：<code>&lt;b&gt;加粗&lt;/b&gt;</code></li>
+                    <li>倾斜：<code>&lt;i&gt;倾斜&lt;/i&gt;</code></li>
+                </ul>
+            </div>
+
+            <div class="article-footer">
+                <div class="article-tags">
+                    <span class="tags-label">标签：</span>
+                    <a href="#" class="tag">Markdown</a>
+                    <a href="#" class="tag">语法</a>
+                    <a href="#" class="tag">文档编辑</a>
+                </div>
+                <div class="article-share">
+                    <span>分享到：</span>
+                    <a href="#" class="share-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="share-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="share-link"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+
+            <!-- 文章导航 -->
+            <nav class="article-nav">
+                <a href="post13.html" class="nav-prev">
+                    <div class="nav-label"><i class="fas fa-arrow-left"></i> 上一篇</div>
+                    <div class="nav-title">MOE 混合专家模型学习笔记</div>
+                </a>
+                <a href="#" class="nav-next">
+                    <div class="nav-label">返回顶部 <i class="fas fa-arrow-up"></i></div>
+                    <div class="nav-title">Markdown 语法使用说明</div>
+                </a>
+            </nav>
+        </article>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <div class="footer-logo">
+                    <a href="index.html">网络知识库</a>
+                </div>
+                <p class="footer-description">网络技术学习与软件操作指南</p>
+                <div class="social-links">
+                    <a href="#" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>分类</h3>
+                    <ul>
+                        <li><a href="index.html#software">软件学习</a></li>
+                        <li><a href="index.html#knowledge">相关知识</a></li>
+                        <li><a href="index.html#literature">文献总结</a></li>
+                        <li><a href="index.html#practice">实践指南</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>资源</h3>
+                    <ul>
+                        <li><a href="#">学习路径</a></li>
+                        <li><a href="#">常用工具</a></li>
+                        <li><a href="#">在线课程</a></li>
+                        <li><a href="#">技术论坛</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>关于</h3>
+                    <ul>
+                        <li><a href="about.html">关于知识库</a></li>
+                        <li><a href="contact.html">联系方式</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">使用条款</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 网络知识库. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

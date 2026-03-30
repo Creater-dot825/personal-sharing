@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网络知识库 - 网络技术学习平台</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html">网络知识库</a>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link active">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="software.html" class="nav-link">软件学习</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="knowledge.html" class="nav-link">相关知识</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="literature.html" class="nav-link">文献总结</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="practice.html" class="nav-link">实践指南</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">关于</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link">联系</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="搜索文章...">
+                    <button class="search-btn" aria-label="搜索">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="theme-toggle">
+                    <button id="themeBtn" aria-label="切换主题">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">网络知识库</h1>
+            <p class="hero-subtitle">网络技术学习与软件操作指南</p>
+            <div class="hero-meta">
+                <span><i class="fas fa-calendar"></i> 2026年</span>
+                <span><i class="fas fa-book"></i> 网络技术</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主要内容区 -->
+    <main class="main-content">
+        <div class="container">
+            <!-- 软件学习分类 -->
+            <section id="software" class="category-section">
+                <div class="category-header">
+                    <h2 class="category-title">
+                        <i class="fas fa-desktop"></i>
+                        软件学习
+                    </h2>
+                    <p class="category-description">网络工具软件、操作系统、服务器软件等详细使用教程</p>
+                </div>
+
+                <div class="posts-grid">
+                    <!-- 软件学习文章 1 -->
+                    <article class="post-card">
+                        <div class="post-header">
+                            <div class="post-category">
+                                <span>网络仿真</span>
+                            </div>
+                            <h2 class="post-title">
+                                <a href="post7.html">OMNeT++ 网络仿真工具入门与使用指南</a>
+                            </h2>
+                            <p class="post-meta">
+                                <span><i class="fas fa-user"></i> 作者</span>
+                                <span><i class="fas fa-calendar"></i> 2026-03-30</span>
+                                <span><i class="fas fa-clock"></i> 25 分钟阅读</span>
+                            </p>
+                        </div>
+                        <div class="post-excerpt">
+                            <p>OMNeT++ 是强大的网络仿真工具，广泛用于网络协议、网络架构和性能评估。本文详细介绍 OMNeT++ 的安装、配置和基础使用方法，帮助你快速上手网络仿真。</p>
+                        </div>
+                        <div class="post-footer">
+                            <a href="post7.html" class="read-more">阅读全文 <i class="fas fa-arrow-right"></i></a>
+                            <div class="post-tags">
+                                <span class="tag">OMNeT++</span>
+                                <span class="tag">网络仿真</span>
+                                <span class="tag">网络协议</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- 相关知识分类 -->
+            <section id="knowledge" class="category-section">
+                <div class="category-header">
+                    <h2 class="category-title">
+                        <i class="fas fa-book"></i>
+                        相关知识
+                    </h2>
+                    <p class="category-description">网络基础、网络安全、网络协议等理论知识</p>
+                </div>
+
+                <div class="posts-grid">
+                    <!-- 相关知识文章 1 -->
+                    <article class="post-card">
+                        <div class="post-header">
+                            <div class="post-category">
+                                <span>计算机组网</span>
+                            </div>
+                            <h2 class="post-title">
+                                <a href="post8.html">计算机组网基础知识与实践指南</a>
+                            </h2>
+                            <p class="post-meta">
+                                <span><i class="fas fa-user"></i> 作者</span>
+                                <span><i class="fas fa-calendar"></i> 2026-03-30</span>
+                                <span><i class="fas fa-clock"></i> 30 分钟阅读</span>
+                            </p>
+                        </div>
+                        <div class="post-excerpt">
+                            <p>计算机组网是构建网络的基础。本文详细介绍网络拓扑结构、网络设备选择、IP地址规划、局域网搭建等核心知识，帮助你掌握组网的基本技能。</p>
+                        </div>
+                        <div class="post-footer">
+                            <a href="post8.html" class="read-more">阅读全文 <i class="fas fa-arrow-right"></i></a>
+                            <div class="post-tags">
+                                <span class="tag">计算机组网</span>
+                                <span class="tag">网络拓扑</span>
+                                <span class="tag">IP规划</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 相关知识文章 2 -->
+                    <article class="post-card">
+                        <div class="post-header">
+                            <div class="post-category">
+                                <span>深度学习</span>
+                            </div>
+                            <h2 class="post-title">
+                                <a href="post13.html">MOE 混合专家模型学习笔记</a>
+                            </h2>
+                            <p class="post-meta">
+                                <span><i class="fas fa-user"></i> 作者</span>
+                                <span><i class="fas fa-calendar"></i> 2026-03-30</span>
+                                <span><i class="fas fa-clock"></i> 30 分钟阅读</span>
+                            </p>
+                        </div>
+                        <div class="post-excerpt">
+                            <p>详细介绍 Mixture of Experts (MoE) 模型的基本原理、路由机制、模型结构以及推理流程，帮助你理解混合专家模型的核心思想。</p>
+                        </div>
+                        <div class="post-footer">
+                            <a href="post13.html" class="read-more">阅读全文 <i class="fas fa-arrow-right"></i></a>
+                            <div class="post-tags">
+                                <span class="tag">MOE</span>
+                                <span class="tag">混合专家模型</span>
+                                <span class="tag">深度学习</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 相关知识文章 3 -->
+                    <article class="post-card">
+                        <div class="post-header">
+                            <div class="post-category">
+                                <span>文档编辑</span>
+                            </div>
+                            <h2 class="post-title">
+                                <a href="post14.html">Markdown 语法使用说明</a>
+                            </h2>
+                            <p class="post-meta">
+                                <span><i class="fas fa-user"></i> 作者</span>
+                                <span><i class="fas fa-calendar"></i> 2026-03-30</span>
+                                <span><i class="fas fa-clock"></i> 25 分钟阅读</span>
+                            </p>
+                        </div>
+                        <div class="post-excerpt">
+                            <p>详细介绍 Markdown 语法的各种使用方法，包括标题、段落、文字格式、列表、表格、代码块等，帮助你快速掌握 Markdown 文档编辑技巧。</p>
+                        </div>
+                        <div class="post-footer">
+                            <a href="post14.html" class="read-more">阅读全文 <i class="fas fa-arrow-right"></i></a>
+                            <div class="post-tags">
+                                <span class="tag">Markdown</span>
+                                <span class="tag">语法</span>
+                                <span class="tag">文档编辑</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- 文献总结分类 -->
+            <section id="literature" class="category-section">
+                <div class="category-header">
+                    <h2 class="category-title">
+                        <i class="fas fa-file-alt"></i>
+                        文献总结
+                    </h2>
+                    <p class="category-description">网络领域学术文献、技术论文的总结和分析</p>
+                </div>
+
+                <div class="posts-grid">
+                    <!-- 文献总结文章待添加 -->
+                </div>
+            </section>
+
+            <!-- 实践指南分类 -->
+            <section id="practice" class="category-section">
+                <div class="category-header">
+                    <h2 class="category-title">
+                        <i class="fas fa-graduation-cap"></i>
+                        实践指南
+                    </h2>
+                    <p class="category-description">网络实验、项目实践、案例分析等实战内容</p>
+                </div>
+
+                <div class="posts-grid">
+                    <!-- 实践指南文章 1 -->
+                    <article class="post-card">
+                        <div class="post-header">
+                            <div class="post-category">
+                                <span>系统配置</span>
+                            </div>
+                            <h2 class="post-title">
+                                <a href="post9.html">NVIDIA 驱动与 CUDA 配置指南</a>
+                            </h2>
+                            <p class="post-meta">
+                                <span><i class="fas fa-user"></i> 作者</span>
+                                <span><i class="fas fa-calendar"></i> 2026-03-30</span>
+                                <span><i class="fas fa-clock"></i> 20 分钟阅读</span>
+                            </p>
+                        </div>
+                        <div class="post-excerpt">
+                            <p>详细介绍 NVIDIA 显卡驱动、CUDA 和 cuDNN 的安装、配置方法，以及常见问题解决。</p>
+                        </div>
+                        <div class="post-footer">
+                            <a href="post9.html" class="read-more">阅读全文 <i class="fas fa-arrow-right"></i></a>
+                            <div class="post-tags">
+                                <span class="tag">NVIDIA</span>
+                                <span class="tag">CUDA</span>
+                                <span class="tag">显卡驱动</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 实践指南文章 2 -->
+                    <article class="post-card">
+                        <div class="post-header">
+                            <div class="post-category">
+                                <span>容器化</span>
+                            </div>
+                            <h2 class="post-title">
+                                <a href="post10.html">Docker 安装与配置指南</a>
+                            </h2>
+                            <p class="post-meta">
+                                <span><i class="fas fa-user"></i> 作者</span>
+                                <span><i class="fas fa-calendar"></i> 2026-03-30</span>
+                                <span><i class="fas fa-clock"></i> 15 分钟阅读</span>
+                            </p>
+                        </div>
+                        <div class="post-excerpt">
+                            <p>详细介绍 Docker 在 Ubuntu 系统上的安装方法，包括官方源和国内镜像源，以及常见配置。</p>
+                        </div>
+                        <div class="post-footer">
+                            <a href="post10.html" class="read-more">阅读全文 <i class="fas fa-arrow-right"></i></a>
+                            <div class="post-tags">
+                                <span class="tag">Docker</span>
+                                <span class="tag">容器化</span>
+                                <span class="tag">系统配置</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 实践指南文章 3 -->
+                    <article class="post-card">
+                        <div class="post-header">
+                            <div class="post-category">
+                                <span>GPU 容器</span>
+                            </div>
+                            <h2 class="post-title">
+                                <a href="post11.html">NVIDIA Docker 配置教程</a>
+                            </h2>
+                            <p class="post-meta">
+                                <span><i class="fas fa-user"></i> 作者</span>
+                                <span><i class="fas fa-calendar"></i> 2026-03-30</span>
+                                <span><i class="fas fa-clock"></i> 25 分钟阅读</span>
+                            </p>
+                        </div>
+                        <div class="post-excerpt">
+                            <p>详细介绍 NVIDIA Container Toolkit（NVIDIA Docker）的安装和配置方法，让 Docker 容器能够访问 GPU 资源。</p>
+                        </div>
+                        <div class="post-footer">
+                            <a href="post11.html" class="read-more">阅读全文 <i class="fas fa-arrow-right"></i></a>
+                            <div class="post-tags">
+                                <span class="tag">NVIDIA Docker</span>
+                                <span class="tag">GPU 加速</span>
+                                <span class="tag">容器化</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 实践指南文章 4 -->
+                    <article class="post-card">
+                        <div class="post-header">
+                            <div class="post-category">
+                                <span>网络设备</span>
+                            </div>
+                            <h2 class="post-title">
+                                <a href="post12.html">Mellanox CX-5 网卡配置流程</a>
+                            </h2>
+                            <p class="post-meta">
+                                <span><i class="fas fa-user"></i> 作者</span>
+                                <span><i class="fas fa-calendar"></i> 2026-03-30</span>
+                                <span><i class="fas fa-clock"></i> 30 分钟阅读</span>
+                            </p>
+                        </div>
+                        <div class="post-excerpt">
+                            <p>详细介绍 Mellanox CX-5 网卡的驱动安装、配置和测试方法，包括 IB 和 ROCE 模式。</p>
+                        </div>
+                        <div class="post-footer">
+                            <a href="post12.html" class="read-more">阅读全文 <i class="fas fa-arrow-right"></i></a>
+                            <div class="post-tags">
+                                <span class="tag">Mellanox</span>
+                                <span class="tag">CX-5</span>
+                                <span class="tag">InfiniBand</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <div class="footer-logo">
+                    <a href="index.html">网络知识库</a>
+                </div>
+                <p class="footer-description">网络技术学习与软件操作指南</p>
+                <div class="social-links">
+                    <a href="#" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>分类</h3>
+                    <ul>
+                        <li><a href="#software">软件学习</a></li>
+                        <li><a href="#knowledge">相关知识</a></li>
+                        <li><a href="#literature">文献总结</a></li>
+                        <li><a href="#practice">实践指南</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>资源</h3>
+                    <ul>
+                        <li><a href="#">学习路径</a></li>
+                        <li><a href="#">常用工具</a></li>
+                        <li><a href="#">在线课程</a></li>
+                        <li><a href="#">技术论坛</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>关于</h3>
+                    <ul>
+                        <li><a href="about.html">关于知识库</a></li>
+                        <li><a href="contact.html">联系方式</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">使用条款</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 网络知识库. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NVIDIA Docker 配置教程 - 网络知识库</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html">网络知识库</a>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#software" class="nav-link">软件学习</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#knowledge" class="nav-link">相关知识</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#literature" class="nav-link">文献总结</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#practice" class="nav-link active">实践指南</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">关于</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link">联系</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <div class="theme-toggle">
+                    <button id="themeBtn" aria-label="切换主题">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 文章内容 -->
+    <main class="main-content">
+        <article class="article-full">
+            <div class="article-header">
+                <div class="article-meta">
+                    <span class="article-category">实践指南</span>
+                    <span class="article-date">2026-03-30</span>
+                    <span class="article-read-time">25 分钟阅读</span>
+                </div>
+                <h1 class="article-title">NVIDIA Docker 配置教程</h1>
+                <p class="article-subtitle">详细介绍 NVIDIA Container Toolkit（NVIDIA Docker）的安装和配置方法，让 Docker 容器能够访问 GPU 资源。</p>
+                <div class="article-author">
+                    <div class="author-info">
+                        <div class="author-avatar">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="author-details">
+                            <span class="author-name">网络知识库</span>
+                            <span class="author-role">网络技术学习平台</span>
+                        </div>
+                    </div>
+                    <div class="article-actions">
+                        <button class="action-btn" title="分享">
+                            <i class="fas fa-share-alt"></i>
+                        </button>
+                        <button class="action-btn" title="收藏">
+                            <i class="far fa-bookmark"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-content">
+                <h2>NVIDIA Docker 简介</h2>
+                <p>NVIDIA Container Toolkit（原 NVIDIA Docker）允许您在 Docker 容器中使用 NVIDIA GPU 资源。它提供了一套工具和库，使得在容器中运行 GPU 加速的应用程序变得更加简单。</p>
+
+                <h2>Docker 安装</h2>
+
+                <h3>卸载旧版本</h3>
+                <p>如果之前安装过旧版本 Docker，需要先卸载：
+                <pre><code>sudo apt-get remove docker docker-engine docker.io containerd runc</code></pre>
+                彻底卸载 Docker 引擎：
+                <pre><code>sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo rm -rf /var/lib/docker
+sudo rm -rf /var/lib/containerd</code></pre>
+                </p>
+
+                <h3>自动安装脚本（推荐）</h3>
+                <p>使用 Docker 官方提供的自动安装脚本：
+                <pre><code>export DOWNLOAD_URL="https://mirrors.tuna.tsinghua.edu.cn/docker-ce"
+curl -fsSL https://get.docker.com/ | sh</code></pre>
+                </p>
+
+                <h3>APT 安装</h3>
+                <p>
+                <pre><code>sudo apt-get install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+sudo apt-get install docker-ce</code></pre>
+                </p>
+
+                <h3>验证 Docker 安装</h3>
+                <p>
+                <pre><code>sudo docker run hello-world</code></pre>
+                如果输出 "Hello from Docker!"，说明 Docker 安装成功。
+                </p>
+
+                <h2>NVIDIA 显卡驱动安装</h2>
+
+                <h3>检查系统支持的驱动</h3>
+                <p>
+                <pre><code>ubuntu-drivers devices</code></pre>
+                </p>
+
+                <h3>安装 NVIDIA 驱动</h3>
+                <p>
+                <pre><code>sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt-get install dkms build-essential
+sudo apt install nvidia-driver-525
+sudo reboot
+nvidia-smi</code></pre>
+                验证驱动是否成功加载：
+                <pre><code>nvidia-smi</code></pre>
+                </p>
+
+                <h2>NVIDIA Container Toolkit 安装</h2>
+
+                <h3>添加 NVIDIA 软件源</h3>
+                <p>
+                <pre><code>distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg
+curl -s -L https://nvidia.github.io/libnvidia-container/$distribution/libnvidia-container.list | \
+  sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
+  sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list</code></pre>
+                </p>
+
+                <h3>安装 NVIDIA Docker 2 包</h3>
+                <p>
+                <pre><code>sudo apt-get update
+sudo apt-get install -y nvidia-docker2</code></pre>
+                安装完成后重启 Docker 服务：
+                <pre><code>sudo systemctl restart docker</code></pre>
+                </p>
+
+                <h2>验证 NVIDIA Docker 安装</h2>
+                <p>运行基本的 CUDA 容器来验证：
+                <pre><code>sudo docker run --rm --gpus all nvidia/cuda:12.2.91-base-ubuntu22.04 nvidia-smi</code></pre>
+                如果能够正常输出 NVIDIA-SMI 信息，说明 NVIDIA Docker 配置成功。
+                </p>
+
+                <h2>在容器中使用 GPU</h2>
+                <p>运行支持 CUDA 的容器时，需要使用 --gpus 参数：
+                <pre><code>sudo docker run --rm --gpus all nvidia/cuda:12.2.91-base-ubuntu22.04 nvidia-smi
+sudo docker run --rm --gpus all nvidia/cuda:12.2.91-cudnn8-runtime-ubuntu22.04 python -c "import torch; print(torch.cuda.is_available())"</code></pre>
+                </p>
+
+                <h2>常用配置选项</h2>
+
+                <h3>指定 GPU 设备</h3>
+                <p>指定使用特定 GPU 设备：
+                <pre><code>sudo docker run --rm --gpus "device=0" nvidia/cuda nvidia-smi</code></pre>
+                或者使用 PCI 总线 ID：
+                <pre><code>sudo docker run --rm --gpus "device=0000:01:00.0" nvidia/cuda nvidia-smi</code></pre>
+                </p>
+
+                <h3>指定 GPU 数量</h3>
+                <p>
+                <pre><code>sudo docker run --rm --gpus 2 nvidia/cuda nvidia-smi</code></pre>
+                </p>
+
+                <h2>常见问题</h2>
+
+                <h3>docker: Error response from daemon: could not select device driver "nvidia" with capabilities: [gpu].</h3>
+                <p>说明 NVIDIA Docker 没有正确安装。解决方法：
+                <ul>
+                    <li>重新安装 NVIDIA Docker</li>
+                    <li>确保 Docker 服务已重启</li>
+                    <li>检查 NVIDIA 驱动是否正常工作</li>
+                </ul>
+                </p>
+
+                <h3>GPU 设备访问权限问题</h3>
+                <p>如果容器无法访问 GPU 设备，检查权限设置：
+                <pre><code>ls -l /dev/nvidia*
+groups $(whoami)</code></pre>
+                确保用户在 docker 组中。
+                </p>
+
+                <h2>升级和维护</h2>
+
+                <h3>升级 NVIDIA Docker</h3>
+                <p>
+                <pre><code>sudo apt-get update
+sudo apt-get upgrade nvidia-docker2</code></pre>
+                </p>
+
+                <h3>查看日志</h3>
+                <p>
+                <pre><code>journalctl -u docker.service --no-pager</code></pre>
+                </p>
+            </div>
+
+            <div class="article-footer">
+                <div class="article-tags">
+                    <span class="tags-label">标签：</span>
+                    <a href="#" class="tag">NVIDIA Docker</a>
+                    <a href="#" class="tag">GPU 加速</a>
+                    <a href="#" class="tag">容器化</a>
+                </div>
+                <div class="article-share">
+                    <span>分享到：</span>
+                    <a href="#" class="share-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="share-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="share-link"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+
+            <!-- 文章导航 -->
+            <nav class="article-nav">
+                <a href="post10.html" class="nav-prev">
+                    <div class="nav-label"><i class="fas fa-arrow-left"></i> 上一篇</div>
+                    <div class="nav-title">Docker 安装与配置指南</div>
+                </a>
+                <a href="post12.html" class="nav-next">
+                    <div class="nav-label">下一篇 <i class="fas fa-arrow-right"></i></div>
+                    <div class="nav-title">Mellanox CX-5 网卡配置流程</div>
+                </a>
+            </nav>
+        </article>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <div class="footer-logo">
+                    <a href="index.html">网络知识库</a>
+                </div>
+                <p class="footer-description">网络技术学习与软件操作指南</p>
+                <div class="social-links">
+                    <a href="#" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>分类</h3>
+                    <ul>
+                        <li><a href="index.html#software">软件学习</a></li>
+                        <li><a href="index.html#knowledge">相关知识</a></li>
+                        <li><a href="index.html#literature">文献总结</a></li>
+                        <li><a href="index.html#practice">实践指南</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>资源</h3>
+                    <ul>
+                        <li><a href="#">学习路径</a></li>
+                        <li><a href="#">常用工具</a></li>
+                        <li><a href="#">在线课程</a></li>
+                        <li><a href="#">技术论坛</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>关于</h3>
+                    <ul>
+                        <li><a href="about.html">关于知识库</a></li>
+                        <li><a href="contact.html">联系方式</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">使用条款</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 网络知识库. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

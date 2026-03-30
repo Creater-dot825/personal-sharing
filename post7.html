@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMNeT++ 网络仿真工具入门与使用指南 - 网络知识库</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html">网络知识库</a>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#software" class="nav-link">软件学习</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#knowledge" class="nav-link">相关知识</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#literature" class="nav-link">文献总结</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#practice" class="nav-link">实践指南</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">关于</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link">联系</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <div class="theme-toggle">
+                    <button id="themeBtn" aria-label="切换主题">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 文章内容 -->
+    <main class="main-content">
+        <article class="article-full">
+            <div class="article-header">
+                <div class="article-meta">
+                    <span class="article-category">网络仿真</span>
+                    <span class="article-date">2026-03-30</span>
+                    <span class="article-read-time">25 分钟阅读</span>
+                </div>
+                <h1 class="article-title">OMNeT++ 网络仿真工具入门与使用指南</h1>
+                <p class="article-subtitle">OMNeT++ 是强大的网络仿真工具，广泛用于网络协议、网络架构和性能评估。本文详细介绍 OMNeT++ 的安装、配置和基础使用方法，帮助你快速上手网络仿真。</p>
+                <div class="article-author">
+                    <div class="author-info">
+                        <div class="author-avatar">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="author-details">
+                            <span class="author-name">网络知识库</span>
+                            <span class="author-role">网络技术学习平台</span>
+                        </div>
+                    </div>
+                    <div class="article-actions">
+                        <button class="action-btn" title="分享">
+                            <i class="fas fa-share-alt"></i>
+                        </button>
+                        <button class="action-btn" title="收藏">
+                            <i class="far fa-bookmark"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-content">
+                <h2>什么是 OMNeT++？</h2>
+                <p>OMNeT++ 是一个开源的、模块化的、基于组件的离散事件仿真框架，主要用于通信网络的仿真。它具有以下特点：</p>
+                <ul>
+                    <li><strong>模块化设计</strong>：使用 NED（Network Description）语言定义网络拓扑</li>
+                    <li><strong>C++ 实现</strong>：模块使用 C++ 编写，性能优异</li>
+                    <li><strong>可视化界面</strong>：提供强大的图形化仿真环境</li>
+                    <li><strong>丰富的模型库</strong>：INET 框架提供大量网络协议模型</li>
+                    <li><strong>开源免费</strong>：在学术和商业环境中都可以自由使用</li>
+                </ul>
+
+                <h2>安装 OMNeT++</h2>
+
+                <h3>系统要求</h3>
+                <ul>
+                    <li>Windows 7/10/11、Linux 或 macOS</li>
+                    <li>4GB 以上内存</li>
+                    <li>5GB 以上可用磁盘空间</li>
+                    <li>支持 OpenGL 的显卡（用于可视化）</li>
+                </ul>
+
+                <h3>Windows 安装步骤</h3>
+                <ol>
+                    <li>访问 <a href="https://omnetpp.org">omnetpp.org</a> 下载最新版本</li>
+                    <li>解压下载的压缩包到目标目录（如 <code>C:\omnetpp</code>）</li>
+                    <li>运行 <code>mingwenv.cmd</code> 启动 MinGW 环境</li>
+                    <li>在终端中运行 <code>./configure</code> 配置环境</li>
+                    <li>运行 <code>make</code> 编译 OMNeT++</li>
+                    <li>运行 <code>omnetpp</code> 启动 IDE</li>
+                </ol>
+
+                <h3>Linux 安装步骤</h3>
+                <pre><code># 安装依赖
+sudo apt-get install build-essential gcc g++ bison flex perl \
+    python3 qt5-default libqt5opengl5-dev tcl-dev tk-dev \
+    libxml2-dev zlib1g-dev default-jre doxygen graphviz \
+    libwebkitgtk-3.0-0
+
+# 解压并安装
+tar xvfz omnetpp-5.6.2-src.tgz
+cd omnetpp-5.6.2
+source setenv
+./configure
+make
+omnetpp</code></pre>
+
+                <h2>OMNeT++ 基本概念</h2>
+
+                <h3>模块（Modules）</h3>
+                <p>模块是 OMNeT++ 的基本构建块。模块分为两种类型：</p>
+                <ul>
+                    <li><strong>简单模块</strong>：最底层的模块，包含实际的 C++ 代码</li>
+                    <li><strong>复合模块</strong>：由其他模块组成的模块</li>
+                </ul>
+
+                <h3>NED 语言</h3>
+                <p>NED（Network Description）语言用于定义网络拓扑。示例：</p>
+                <pre><code>simple HelloWorld {
+    parameters:
+        string message;
+    gates:
+        input in;
+        output out;
+}
+
+network Network {
+    submodules:
+        hello1: HelloWorld {
+            parameters:
+                message = "Hello from node 1!";
+        }
+        hello2: HelloWorld {
+            parameters:
+                message = "Hello from node 2!";
+        }
+    connections:
+        hello1.out --> hello2.in;
+        hello2.out --> hello1.in;
+}</code></pre>
+
+                <h3>消息（Messages）</h3>
+                <p>消息是模块之间通信的载体。可以定义自定义消息：</p>
+                <pre><code>message MyMessage {
+    int sourceId;
+    int destinationId;
+    double timestamp;
+    int sequenceNumber;
+}</code></pre>
+
+                <h3>门（Gates）</h3>
+                <p>门是模块的输入输出接口。分为输入门（input）和输出门（output）。</p>
+
+                <h2>创建第一个仿真项目</h2>
+
+                <h3>步骤 1：创建新项目</h3>
+                <ol>
+                    <li>启动 OMNeT++ IDE</li>
+                    <li>选择 <code>File → New → OMNeT++ Project</code></li>
+                    <li>输入项目名称，如 "FirstSimulation"</li>
+                    <li>选择 "Empty project" 模板</li>
+                    <li>点击 Finish 完成创建</li>
+                </ol>
+
+                <h3>步骤 2：创建 NED 文件</h3>
+                <p>在 src 目录下创建 <code>FirstSim.ned</code>：</p>
+                <pre><code>simple Txc1 {
+    gates:
+        input in;
+        output out;
+}
+
+network Tictoc1 {
+    submodules:
+        tic: Txc1;
+        toc: Txc1;
+    connections:
+        tic.out --> toc.in;
+        toc.out --> tic.in;
+}</code></pre>
+
+                <h3>步骤 3：创建 C++ 简单模块</h3>
+                <p>创建 <code>Txc1.cc</code>：</p>
+                <pre><code>#include &lt;string.h&gt;
+#include &lt;omnetpp.h&gt;
+
+using namespace omnetpp;
+
+class Txc1 : public cSimpleModule
+{
+  protected:
+    virtual void initialize() override;
+    virtual void handleMessage(cMessage *msg) override;
+};
+
+Define_Module(Txc1);
+
+void Txc1::initialize()
+{
+    if (strcmp("tic", getName()) == 0) {
+        cMessage *msg = new cMessage("tictocMsg");
+        send(msg, "out");
+    }
+}
+
+void Txc1::handleMessage(cMessage *msg)
+{
+    send(msg, "out");
+}</code></pre>
+
+                <h3>步骤 4：创建配置文件</h3>
+                <p>创建 <code>omnetpp.ini</code>：</p>
+                <pre><code>[General]
+network = Tictoc1
+sim-time-limit = 100s</code></pre>
+
+                <h3>步骤 5：运行仿真</h3>
+                <ol>
+                    <li>右键点击项目，选择 <code>Run As → OMNeT++ Simulation</code></li>
+                    <li>选择配置文件</li>
+                    <li>点击运行按钮开始仿真</li>
+                    <li>使用 GUI 界面观察仿真过程</li>
+                </ol>
+
+                <h2>使用 INET 框架</h2>
+                <p>INET 是 OMNeT++ 最常用的模型库，提供了大量网络协议的实现。</p>
+
+                <h3>安装 INET</h3>
+                <ol>
+                    <li>从 <a href="https://inet.omnetpp.org">inet.omnetpp.org</a> 下载 INET</li>
+                    <li>解压到 OMNeT++ 的工作区</li>
+                    <li>在 IDE 中导入项目</li>
+                    <li>编译 INET 框架</li>
+                </ol>
+
+                <h3>简单的 INET 仿真示例</h3>
+                <pre><code>import inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator;
+import inet.node.ethernet.EtherSwitch;
+import inet.node.inet.StandardHost;
+import inet.node.inet.Router;
+
+network SimpleNetwork {
+    submodules:
+        configurator: Ipv4NetworkConfigurator;
+        host1: StandardHost;
+        host2: StandardHost;
+        router: Router;
+        switch: EtherSwitch;
+    connections:
+        host1.ethg++ &lt;--> switch.ethg++;
+        host2.ethg++ &lt;--> switch.ethg++;
+        switch.ethg++ &lt;--> router.ethg++;
+}</code></pre>
+
+                <h2>仿真结果分析</h2>
+
+                <h3>记录数据</h3>
+                <p>使用 <code>recordScalar()</code> 和 <code>recordStatistic()</code> 记录仿真数据：</p>
+                <pre><code>simtime_t endToEndDelay = arrivalTime - creationTime;
+recordScalar("endToEndDelay", endToEndDelay);
+
+cLongHistogram delayStats;
+delayStats.collect(endToEndDelay);
+recordStatistic("delayStats", delayStats);</code></pre>
+
+                <h3>使用结果分析工具</h3>
+                <p>OMNeT++ 提供了强大的结果分析工具：</p>
+                <ul>
+                    <li><strong>Scalars</strong>：查看标量数据</li>
+                    <li><strong>Vectors</strong>：查看矢量数据</li>
+                    <li><strong>Histograms</strong>：查看统计分布</li>
+                    <li><strong>Matplotlib 集成</strong>：生成专业图表</li>
+                </ul>
+
+                <h3>导出数据</h3>
+                <p>结果可以导出为多种格式：</p>
+                <pre><code># 导出为 CSV
+opp_scavetool export -f 'module("host1")' -o results.csv *.vec *.sca
+
+# 导出为 Matlab 格式
+opp_scavetool export -F matlab -o results.mat *.vec *.sca</code></pre>
+
+                <h2>高级技巧</h2>
+
+                <h3>参数化研究</h3>
+                <p>使用 INI 文件进行参数扫描：</p>
+                <pre><code>[Config ParamStudy]
+network = MyNetwork
+repeat = 10
+**.numHosts = ${5,10,15,20}
+**.traffic.load = ${0.1,0.2,0.3,0.4,0.5}
+sim-time-limit = 100s</code></pre>
+
+                <h3>批处理运行</h3>
+                <p>使用命令行批量运行仿真：</p>
+                <pre><code>#!/bin/bash
+for load in 0.1 0.2 0.3 0.4 0.5; do
+    for run in {1..10}; do
+        ./simulation -u Cmdenv -c ParamStudy \
+            -r $run --**.traffic.load=$load
+    done
+done</code></pre>
+
+                <h3>可视化定制</h3>
+                <p>自定义模块的外观：</p>
+                <pre><code>@figure[bg](type=rect; pos=0,0; width=100%; height=100%;
+    fillColor=lightgray);
+@figure[status](type=text; pos=50,20;
+    text="Status: " + status; fontSize=12);</code></pre>
+
+                <h2>常见问题与调试</h2>
+
+                <h3>调试技巧</h3>
+                <ul>
+                    <li>使用 <code>EV</code> 宏输出调试信息：<code>EV &lt;&lt; "Processing message: " &lt;&lt; msgName &lt;&lt; endl;</code></li>
+                    <li>在仿真运行时设置断点</li>
+                    <li>使用事件日志查看详细执行过程</li>
+                    <li>检查模块连接是否正确</li>
+                </ul>
+
+                <h3>常见错误</h3>
+                <ul>
+                    <li><strong>门未连接</strong>：检查 NED 文件中的 connections 部分</li>
+                    <li><strong>消息未处理</strong>：确保 handleMessage() 函数正确处理所有消息</li>
+                    <li><strong>内存泄漏</strong>：确保创建的消息都被删除或传递</li>
+                    <li><strong>参数错误</strong>：检查 INI 文件参数名称是否正确</li>
+                </ul>
+
+                <h2>最佳实践</h2>
+                <ul>
+                    <li>从小规模仿真开始，逐步增加复杂度</li>
+                    <li>使用版本控制管理仿真代码</li>
+                    <li>编写清晰的文档说明每个模块的功能</li>
+                    <li>定期运行回归测试确保修改不破坏现有功能</li>
+                    <li>使用模块化设计，提高代码复用性</li>
+                    <li>注意仿真性能，优化热点代码</li>
+                    <li>合理设置随机数种子，确保结果可重复</li>
+                </ul>
+
+                <h2>学习资源</h2>
+                <ul>
+                    <li><strong>官方教程</strong>：OMNeT++ 自带的 TicToc 教程系列</li>
+                    <li><strong>INET 文档</strong>：inet.omnetpp.org 提供详细的文档</li>
+                    <li><strong>邮件列表</strong>：OMNeT++ 邮件列表是解决问题的好地方</li>
+                    <li><strong>学术论文</strong>：搜索使用 OMNeT++ 的研究论文</li>
+                    <li><strong>GitHub</strong>：参考开源项目的实现方式</li>
+                </ul>
+
+                <h2>总结</h2>
+                <p>OMNeT++ 是一个功能强大的网络仿真工具，掌握它需要一定的学习曲线，但一旦掌握，你将能够进行各种网络协议和架构的研究。</p>
+                <p>从简单的 TicToc 例子开始，逐步学习 NED 语言、C++ 模块编写、INet 框架使用，最后进行复杂的网络仿真。记住，实践是最好的学习方式，不断尝试不同的仿真场景，你将成为 OMNeT++ 专家。</p>
+            </div>
+
+            <div class="article-footer">
+                <div class="article-tags">
+                    <span class="tags-label">标签：</span>
+                    <a href="#" class="tag">OMNeT++</a>
+                    <a href="#" class="tag">网络仿真</a>
+                    <a href="#" class="tag">网络协议</a>
+                </div>
+                <div class="article-share">
+                    <span>分享到：</span>
+                    <a href="#" class="share-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="share-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="share-link"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+
+            <!-- 文章导航 -->
+            <nav class="article-nav">
+                <a href="post3.html" class="nav-prev">
+                    <div class="nav-label"><i class="fas fa-arrow-left"></i> 上一篇</div>
+                    <div class="nav-title">Windows Server 2022 服务器配置入门</div>
+                </a>
+                <a href="post4.html" class="nav-next">
+                    <div class="nav-label">下一篇 <i class="fas fa-arrow-right"></i></div>
+                    <div class="nav-title">TCP/IP 协议详解与网络通信原理</div>
+                </a>
+            </nav>
+        </article>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <div class="footer-logo">
+                    <a href="index.html">网络知识库</a>
+                </div>
+                <p class="footer-description">网络技术学习与软件操作指南</p>
+                <div class="social-links">
+                    <a href="#" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>分类</h3>
+                    <ul>
+                        <li><a href="index.html#software">软件学习</a></li>
+                        <li><a href="index.html#knowledge">相关知识</a></li>
+                        <li><a href="index.html#literature">文献总结</a></li>
+                        <li><a href="index.html#practice">实践指南</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>资源</h3>
+                    <ul>
+                        <li><a href="#">学习路径</a></li>
+                        <li><a href="#">常用工具</a></li>
+                        <li><a href="#">在线课程</a></li>
+                        <li><a href="#">技术论坛</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>关于</h3>
+                    <ul>
+                        <li><a href="about.html">关于知识库</a></li>
+                        <li><a href="contact.html">联系方式</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">使用条款</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 网络知识库. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

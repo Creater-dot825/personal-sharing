@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文献总结 - 网络知识库</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html">网络知识库</a>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="software.html" class="nav-link">软件学习</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="knowledge.html" class="nav-link">相关知识</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="literature.html" class="nav-link active">文献总结</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="practice.html" class="nav-link">实践指南</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">关于</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link">联系</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="搜索文章...">
+                    <button class="search-btn" aria-label="搜索">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="theme-toggle">
+                    <button id="themeBtn" aria-label="切换主题">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="main-content">
+        <div class="container">
+            <!-- 文献总结分类 -->
+            <section class="category-section">
+                <div class="category-header">
+                    <h2 class="category-title">
+                        <i class="fas fa-file-alt"></i>
+                        文献总结
+                    </h2>
+                    <p class="category-description">网络领域学术文献、技术论文的总结和分析</p>
+                </div>
+
+                <div class="posts-grid">
+                    <!-- 文献总结文章待添加 -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <div class="footer-logo">
+                    <a href="index.html">网络知识库</a>
+                </div>
+                <p class="footer-description">网络技术学习与软件操作指南</p>
+                <div class="social-links">
+                    <a href="#" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>分类</h3>
+                    <ul>
+                        <li><a href="software.html">软件学习</a></li>
+                        <li><a href="knowledge.html">相关知识</a></li>
+                        <li><a href="literature.html">文献总结</a></li>
+                        <li><a href="practice.html">实践指南</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>资源</h3>
+                    <ul>
+                        <li><a href="#">学习路径</a></li>
+                        <li><a href="#">常用工具</a></li>
+                        <li><a href="#">在线课程</a></li>
+                        <li><a href="#">技术论坛</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>关于</h3>
+                    <ul>
+                        <li><a href="about.html">关于知识库</a></li>
+                        <li><a href="contact.html">联系方式</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">使用条款</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 网络知识库. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

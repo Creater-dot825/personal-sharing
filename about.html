@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于 - 网络知识库</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html">网络知识库</a>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#software" class="nav-link">软件学习</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#knowledge" class="nav-link">相关知识</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#literature" class="nav-link">文献总结</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#practice" class="nav-link">实践指南</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link active">关于</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link">联系</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <div class="theme-toggle">
+                    <button id="themeBtn" aria-label="切换主题">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 关于页面内容 -->
+    <main class="main-content">
+        <div class="container">
+            <div class="about-page">
+                <!-- 知识库介绍 -->
+                <section class="about-hero">
+                    <div class="about-avatar">
+                        <div class="avatar-wrapper">
+                            <i class="fas fa-book"></i>
+                        </div>
+                    </div>
+                    <div class="about-info">
+                        <h1>关于网络知识库</h1>
+                        <p class="about-title">网络技术学习与软件操作指南</p>
+                        <div class="about-social">
+                            <a href="#" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" aria-label="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 知识库简介 -->
+                <section class="about-intro">
+                    <h2>知识库简介</h2>
+                    <p>网络知识库是一个专注于网络技术学习和软件操作指南的在线学习平台。我们致力于提供高质量、实用的网络技术知识，帮助学习者快速掌握网络领域的核心技能。</p>
+                    <p>无论你是网络初学者还是有经验的网络工程师，都能在这里找到适合自己的学习资源。我们的内容涵盖网络基础、网络安全、网络设备配置、常用网络工具等多个方面。</p>
+                </section>
+
+                <!-- 内容分类 -->
+                <section class="about-skills">
+                    <h2>内容分类</h2>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fas fa-desktop"></i>
+                            </div>
+                            <div class="skill-content">
+                                <h3>软件学习</h3>
+                                <p>网络工具软件、操作系统、服务器软件等详细使用教程</p>
+                                <div class="skill-list">
+                                    <span class="skill-tag">Wireshark</span>
+                                    <span class="skill-tag">PuTTY</span>
+                                    <span class="skill-tag">SecureCRT</span>
+                                    <span class="skill-tag">Windows Server</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="skill-content">
+                                <h3>相关知识</h3>
+                                <p>网络基础、网络安全、网络协议等理论知识</p>
+                                <div class="skill-list">
+                                    <span class="skill-tag">TCP/IP</span>
+                                    <span class="skill-tag">防火墙</span>
+                                    <span class="skill-tag">路由器</span>
+                                    <span class="skill-tag">交换机</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <div class="skill-content">
+                                <h3>实践指南</h3>
+                                <p>实验环境搭建、故障排除、最佳实践等实用内容</p>
+                                <div class="skill-list">
+                                    <span class="skill-tag">网络实验</span>
+                                    <span class="skill-tag">故障排除</span>
+                                    <span class="skill-tag">性能优化</span>
+                                    <span class="skill-tag">安全加固</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 学习路径 -->
+                <section class="about-experience">
+                    <h2>学习路径</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <div class="timeline-header">
+                                    <h3>入门阶段</h3>
+                                    <span class="timeline-date">第 1-2 月</span>
+                                </div>
+                                <div class="timeline-company">网络基础</div>
+                                <p class="timeline-description">学习 TCP/IP 协议、网络拓扑、IP 地址规划等基础概念，掌握常用网络工具的基本使用。</p>
+                                <div class="timeline-tags">
+                                    <span>TCP/IP</span>
+                                    <span>IP 地址</span>
+                                    <span>Wireshark</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <div class="timeline-header">
+                                    <h3>进阶阶段</h3>
+                                    <span class="timeline-date">第 3-6 月</span>
+                                </div>
+                                <div class="timeline-company">网络设备与安全</div>
+                                <p class="timeline-description">学习路由器、交换机配置，掌握防火墙、VPN 等安全技术，能够进行基本的网络故障排除。</p>
+                                <div class="timeline-tags">
+                                    <span>路由器</span>
+                                    <span>交换机</span>
+                                    <span>防火墙</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <div class="timeline-header">
+                                    <h3>高级阶段</h3>
+                                    <span class="timeline-date">第 7-12 月</span>
+                                </div>
+                                <div class="timeline-company">高级应用与实践</div>
+                                <p class="timeline-description">深入学习网络设计、性能优化、安全加固等高级话题，能够独立完成复杂网络环境的部署和维护。</p>
+                                <div class="timeline-tags">
+                                    <span>网络设计</span>
+                                    <span>性能优化</span>
+                                    <span>安全加固</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 联系我们 -->
+                <section class="about-contact">
+                    <h2>联系我们</h2>
+                    <div class="contact-methods">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-info">
+                                <h3>邮箱</h3>
+                                <p><a href="mailto:hcyu.xidian@foxmail.com" style="color: var(--primary-color); text-decoration: none;">hcyu.xidian@foxmail.com</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="contact-info">
+                                <h3>GitHub</h3>
+                                <p>github.com/networkkb</p>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <div class="contact-info">
+                                <h3>反馈</h3>
+                                <p>欢迎提出建议</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <div class="footer-logo">
+                    <a href="index.html">网络知识库</a>
+                </div>
+                <p class="footer-description">网络技术学习与软件操作指南</p>
+                <div class="social-links">
+                    <a href="#" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>分类</h3>
+                    <ul>
+                        <li><a href="index.html#software">软件学习</a></li>
+                        <li><a href="index.html#knowledge">相关知识</a></li>
+                        <li><a href="index.html#literature">文献总结</a></li>
+                        <li><a href="index.html#practice">实践指南</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>资源</h3>
+                    <ul>
+                        <li><a href="#">学习路径</a></li>
+                        <li><a href="#">常用工具</a></li>
+                        <li><a href="#">在线课程</a></li>
+                        <li><a href="#">技术论坛</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>关于</h3>
+                    <ul>
+                        <li><a href="about.html">关于知识库</a></li>
+                        <li><a href="contact.html">联系方式</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">使用条款</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 网络知识库. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

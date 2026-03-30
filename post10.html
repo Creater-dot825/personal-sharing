@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker 安装与配置指南 - 网络知识库</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html">网络知识库</a>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#software" class="nav-link">软件学习</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#knowledge" class="nav-link">相关知识</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#literature" class="nav-link">文献总结</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#practice" class="nav-link active">实践指南</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">关于</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link">联系</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <div class="theme-toggle">
+                    <button id="themeBtn" aria-label="切换主题">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 文章内容 -->
+    <main class="main-content">
+        <article class="article-full">
+            <div class="article-header">
+                <div class="article-meta">
+                    <span class="article-category">实践指南</span>
+                    <span class="article-date">2026-03-30</span>
+                    <span class="article-read-time">15 分钟阅读</span>
+                </div>
+                <h1 class="article-title">Docker 安装与配置指南</h1>
+                <p class="article-subtitle">详细介绍 Docker 在 Ubuntu 系统上的安装方法，包括官方源和国内镜像源，以及常见配置。</p>
+                <div class="article-author">
+                    <div class="author-info">
+                        <div class="author-avatar">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="author-details">
+                            <span class="author-name">网络知识库</span>
+                            <span class="author-role">网络技术学习平台</span>
+                        </div>
+                    </div>
+                    <div class="article-actions">
+                        <button class="action-btn" title="分享">
+                            <i class="fas fa-share-alt"></i>
+                        </button>
+                        <button class="action-btn" title="收藏">
+                            <i class="far fa-bookmark"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-content">
+                <h2>Docker 安装</h2>
+
+                <h3>卸载旧版本</h3>
+                <p>如果之前安装过 Docker，需要先卸载旧版本：
+                <pre><code>sudo apt-get remove docker docker-engine docker.io containerd runc</code></pre>
+                </p>
+
+                <h3>安装依赖包</h3>
+                <p>安装 Docker 所需的依赖包：
+                <pre><code>sudo apt install apt-transport-https ca-certificates curl software-properties-common gnupg lsb-release</code></pre>
+                </p>
+
+                <h3>添加 Docker GPG 密钥</h3>
+                <h4>官方源 GPG 密钥</h4>
+                <p>
+                <pre><code>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg</code></pre>
+                </p>
+
+                <h4>阿里源 GPG 密钥（推荐国内用户）</h4>
+                <p>
+                <pre><code>curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg</code></pre>
+                </p>
+
+                <h3>添加软件仓库</h3>
+
+                <h4>官方源</h4>
+                <p>
+                <pre><code>echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null</code></pre>
+                </p>
+
+                <h4>阿里源（推荐国内用户）</h4>
+                <p>
+                <pre><code>echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null</code></pre>
+                </p>
+
+                <h3>更新源并安装 Docker</h3>
+                <p>
+                <pre><code>sudo apt update
+sudo apt-get update
+
+# 安装最新版本的 Docker
+sudo apt install docker-ce docker-ce-cli containerd.io -y</code></pre>
+                </p>
+
+                <h3>验证安装</h3>
+                <p>
+                <pre><code># 查看 Docker 版本
+sudo docker version
+
+# 查看 Docker 运行状态
+sudo systemctl status docker</code></pre>
+                </p>
+
+                <h2>Docker 配置</h2>
+
+                <h3>启用 Docker Bash 自动补全</h3>
+                <p>
+                <pre><code>sudo apt-get install bash-completion
+sudo curl -L https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/bash/docker -o /etc/bash_completion.d/docker.sh
+source /etc/bash_completion.d/docker.sh</code></pre>
+                </p>
+
+                <h3>允许非 root 用户运行 Docker</h3>
+                <p>
+                <pre><code>sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+docker ps -a</code></pre>
+                为了避免每次打开新终端都需要执行 `newgrp docker`，需要在 `~/.bashrc` 文件末尾添加：
+                <pre><code>groupadd -f docker</code></pre>
+                </p>
+
+                <h2>Docker 常用命令</h2>
+                <p>
+                <ul>
+                    <li><code>docker run [image]</code>：运行容器</li>
+                    <li><code>docker ps</code>：查看运行中的容器</li>
+                    <li><code>docker ps -a</code>：查看所有容器</li>
+                    <li><code>docker stop [container_id]</code>：停止容器</li>
+                    <li><code>docker start [container_id]</code>：启动容器</li>
+                    <li><code>docker rm [container_id]</code>：删除容器</li>
+                    <li><code>docker images</code>：查看本地镜像</li>
+                    <li><code>docker rmi [image_id]</code>：删除镜像</li>
+                    <li><code>docker pull [image]</code>：拉取镜像</li>
+                </ul>
+                </p>
+
+                <h2>修改 Docker 镜像源</h2>
+                <p>为了提高镜像下载速度，建议使用国内镜像源。修改 `/etc/docker/daemon.json` 文件（如果不存在则创建）：
+                <pre><code>sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://docker.mirrors.ustc.edu.cn", "https://hub-mirror.c.163.com"]
+}
+EOF</code></pre>
+                重启 Docker 服务：
+                <pre><code>sudo systemctl daemon-reload
+sudo systemctl restart docker</code></pre>
+                验证是否生效：
+                <pre><code>docker info</code></pre>
+                在输出中会看到 "Registry Mirrors" 信息。
+                </p>
+
+                <h2>常见问题</h2>
+
+                <h3>Docker 启动失败</h3>
+                <ul>
+                    <li>检查 Docker 服务状态：<code>systemctl status docker</code></li>
+                    <li>查看日志：<code>journalctl -xeu docker</code></li>
+                    <li>检查网络连接</li>
+                    <li>确保 /var/lib/docker 目录有足够权限</li>
+                </ul>
+
+                <h3>非 root 用户无法运行 Docker</h3>
+                <ul>
+                    <li>确保用户已加入 docker 组</li>
+                    <li>检查 groupadd 和 usermod 命令是否成功</li>
+                    <li>尝试重新登录或重启系统</li>
+                </ul>
+            </div>
+
+            <div class="article-footer">
+                <div class="article-tags">
+                    <span class="tags-label">标签：</span>
+                    <a href="#" class="tag">Docker</a>
+                    <a href="#" class="tag">容器化</a>
+                    <a href="#" class="tag">系统配置</a>
+                </div>
+                <div class="article-share">
+                    <span>分享到：</span>
+                    <a href="#" class="share-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="share-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="share-link"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+
+            <!-- 文章导航 -->
+            <nav class="article-nav">
+                <a href="post9.html" class="nav-prev">
+                    <div class="nav-label"><i class="fas fa-arrow-left"></i> 上一篇</div>
+                    <div class="nav-title">NVIDIA 驱动与 CUDA 配置指南</div>
+                </a>
+                <a href="post11.html" class="nav-next">
+                    <div class="nav-label">下一篇 <i class="fas fa-arrow-right"></i></div>
+                    <div class="nav-title">NVIDIA Docker 配置教程</div>
+                </a>
+            </nav>
+        </article>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <div class="footer-logo">
+                    <a href="index.html">网络知识库</a>
+                </div>
+                <p class="footer-description">网络技术学习与软件操作指南</p>
+                <div class="social-links">
+                    <a href="#" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>分类</h3>
+                    <ul>
+                        <li><a href="index.html#software">软件学习</a></li>
+                        <li><a href="index.html#knowledge">相关知识</a></li>
+                        <li><a href="index.html#literature">文献总结</a></li>
+                        <li><a href="index.html#practice">实践指南</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>资源</h3>
+                    <ul>
+                        <li><a href="#">学习路径</a></li>
+                        <li><a href="#">常用工具</a></li>
+                        <li><a href="#">在线课程</a></li>
+                        <li><a href="#">技术论坛</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>关于</h3>
+                    <ul>
+                        <li><a href="about.html">关于知识库</a></li>
+                        <li><a href="contact.html">联系方式</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">使用条款</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 网络知识库. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NVIDIA 驱动与 CUDA 配置指南 - 网络知识库</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html">网络知识库</a>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#software" class="nav-link">软件学习</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#knowledge" class="nav-link">相关知识</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#literature" class="nav-link">文献总结</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#practice" class="nav-link active">实践指南</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">关于</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link">联系</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <div class="theme-toggle">
+                    <button id="themeBtn" aria-label="切换主题">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 文章内容 -->
+    <main class="main-content">
+        <article class="article-full">
+            <div class="article-header">
+                <div class="article-meta">
+                    <span class="article-category">实践指南</span>
+                    <span class="article-date">2026-03-30</span>
+                    <span class="article-read-time">20 分钟阅读</span>
+                </div>
+                <h1 class="article-title">NVIDIA 驱动与 CUDA 配置指南</h1>
+                <p class="article-subtitle">详细介绍 NVIDIA 显卡驱动、CUDA 和 cuDNN 的安装、配置方法，以及常见问题解决。</p>
+                <div class="article-author">
+                    <div class="author-info">
+                        <div class="author-avatar">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="author-details">
+                            <span class="author-name">网络知识库</span>
+                            <span class="author-role">网络技术学习平台</span>
+                        </div>
+                    </div>
+                    <div class="article-actions">
+                        <button class="action-btn" title="分享">
+                            <i class="fas fa-share-alt"></i>
+                        </button>
+                        <button class="action-btn" title="收藏">
+                            <i class="far fa-bookmark"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-content">
+                <h2>NVIDIA 显卡驱动安装</h2>
+
+                <h3>安装前准备</h3>
+                <ul>
+                    <li>确保系统已更新到最新版本</li>
+                    <li>安装编译工具：
+                        <pre><code>sudo apt-get update
+sudo apt-get install g++
+sudo apt-get install gcc
+sudo apt-get install make</code></pre>
+                    </li>
+                </ul>
+
+                <h3>禁用 Nouveau 驱动</h3>
+                <p>为避免与 NVIDIA 驱动冲突，需要禁用默认的 Nouveau 驱动：
+                <pre><code>sudo vim /etc/modprobe.d/blacklist-nouveau.conf</code></pre>
+                在文件中添加：
+                <pre><code>blacklist nouveau
+options nouveau modeset=0</code></pre>
+                更新内核并重启：
+                <pre><code>sudo update-initramfs -u
+sudo reboot
+lsmod | grep nouveau</code></pre>
+                如果没有输出，说明 Nouveau 驱动已成功禁用。
+                </p>
+
+                <h3>安装 NVIDIA 驱动</h3>
+                <p>查看系统推荐的驱动版本：
+                <pre><code>ubuntu-drivers devices</code></pre>
+                添加图形驱动 PPA 并安装：
+                <pre><code>sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt-get update
+sudo apt-get install nvidia-driver-525  # 替换为推荐的版本号
+sudo apt-get install mesa-common-dev</code></pre>
+                </p>
+
+                <h3>保持内核不更新（防止黑屏）</h3>
+                <p>Linux 内核更新可能导致 NVIDIA 驱动不兼容，建议保持当前内核版本：
+                <pre><code>sudo apt-mark hold linux-image-generic linux-headers-generic</code></pre>
+                重启后验证驱动是否正常：
+                <pre><code>nvidia-smi</code></pre>
+                </p>
+
+                <h2>CUDA 安装</h2>
+
+                <h3>下载 CUDA 安装包</h3>
+                <p>从 NVIDIA 官方网站下载相应版本的 CUDA 安装包：
+                <a href="https://developer.nvidia.com/cuda-toolkit-archive">CUDA Toolkit Archive</a>
+                选择适合 Ubuntu 20.04 的版本。
+                </p>
+
+                <h3>安装 CUDA</h3>
+                <p>根据下载的安装包类型选择相应的安装方法。通常使用 .run 文件安装：
+                <pre><code>sudo sh cuda_12.5.0_555.42.02_linux.run</code></pre>
+                在安装过程中，选择是否安装驱动（如果已安装，则可以跳过）。
+                </p>
+
+                <h3>配置环境变量</h3>
+                <p>在 ~/.bashrc 文件中添加 CUDA 环境变量：
+                <pre><code>export PATH=/usr/local/cuda-12.5/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-12.5/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}</code></pre>
+                应用更改：
+                <pre><code>source ~/.bashrc</code></pre>
+                验证 CUDA 安装：
+                <pre><code>nvcc -V</code></pre>
+                </p>
+
+                <h2>cuDNN 安装</h2>
+
+                <h3>下载 cuDNN</h3>
+                <p>从 NVIDIA 开发者网站下载与 CUDA 版本匹配的 cuDNN 安装包：
+                <a href="https://developer.nvidia.com/rdp/cudnn-archive">cuDNN Archive</a>
+                下载 tar 文件或 deb 文件。
+                </p>
+
+                <h3>tar 文件安装</h3>
+                <p>解压并安装：
+                <pre><code>tar -xvf cudnn-linux-x86_64-9.1.1.17_cuda12-archive.tar.xz
+sudo cp cudnn-linux-x86_64-9.1.1.17_cuda12-archive/include/cudnn*.h /usr/local/cuda-12.5/include
+sudo cp -P cudnn-linux-x86_64-9.1.1.17_cuda12-archive/lib/libcudnn* /usr/local/cuda-12.5/lib64
+chmod a+r /usr/local/cuda-12.5/include/cudnn*.h /usr/local/cuda-12.5/lib64/libcudnn*</code></pre>
+                验证 cuDNN 安装：
+                <pre><code>cat /usr/local/cuda/include/cudnn_version.h | grep CUDNN_MAJOR -A 2</code></pre>
+                </p>
+
+                <h2>卸载方法</h2>
+
+                <h3>卸载 CUDA</h3>
+                <p>使用 CUDA 提供的卸载工具：
+                <pre><code>cd /usr/local/cuda-12.5/bin
+sudo ./cuda-uninstaller</code></pre>
+                或者使用 apt 卸载：
+                <pre><code>sudo apt-get remove cuda
+sudo apt autoremove
+sudo apt-get remove cuda*
+cd /usr/local/
+sudo rm -r cuda-12.5
+sudo dpkg -l | grep cuda
+sudo dpkg -P 残留文件名</code></pre>
+                </p>
+
+                <h3>卸载 NVIDIA 驱动</h3>
+                <p>使用 Ubuntu 自带的卸载工具：
+                <pre><code>sudo apt-get remove --purge nvidia*
+sudo apt-get autoremove
+sudo apt-get autoclean</code></pre>
+                或者使用驱动自带的卸载程序。
+                </p>
+
+                <h2>常见问题</h2>
+
+                <h3>开机黑屏无法进入桌面</h3>
+                <p>主要由 Linux 内核更新导致。解决方法：
+                <ul>
+                    <li>按 Shift 进入 Grub 菜单</li>
+                    <li>选择恢复模式（Recovery Mode）</li>
+                    <li>在恢复模式中，选择 root 进入命令行</li>
+                    <li>重新安装 NVIDIA 驱动</li>
+                    <li>或者使用 nouveau 驱动临时进入系统</li>
+                </ul>
+                </p>
+
+                <h3>多版本 CUDA 切换</h3>
+                <p>安装多个 CUDA 版本后，可以通过以下方式切换：
+                <ul>
+                    <li>修改 ~/.bashrc 文件中的 CUDA 路径</li>
+                    <li>或者使用 update-alternatives 命令管理</li>
+                </ul>
+                </p>
+            </div>
+
+            <div class="article-footer">
+                <div class="article-tags">
+                    <span class="tags-label">标签：</span>
+                    <a href="#" class="tag">NVIDIA</a>
+                    <a href="#" class="tag">CUDA</a>
+                    <a href="#" class="tag">显卡驱动</a>
+                </div>
+                <div class="article-share">
+                    <span>分享到：</span>
+                    <a href="#" class="share-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="share-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="share-link"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+
+            <!-- 文章导航 -->
+            <nav class="article-nav">
+                <a href="index.html" class="nav-prev">
+                    <div class="nav-label"><i class="fas fa-arrow-left"></i> 上一篇</div>
+                    <div class="nav-title">首页</div>
+                </a>
+                <a href="post10.html" class="nav-next">
+                    <div class="nav-label">下一篇 <i class="fas fa-arrow-right"></i></div>
+                    <div class="nav-title">Docker 安装与配置指南</div>
+                </a>
+            </nav>
+        </article>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <div class="footer-logo">
+                    <a href="index.html">网络知识库</a>
+                </div>
+                <p class="footer-description">网络技术学习与软件操作指南</p>
+                <div class="social-links">
+                    <a href="#" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>分类</h3>
+                    <ul>
+                        <li><a href="index.html#software">软件学习</a></li>
+                        <li><a href="index.html#knowledge">相关知识</a></li>
+                        <li><a href="index.html#literature">文献总结</a></li>
+                        <li><a href="index.html#practice">实践指南</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>资源</h3>
+                    <ul>
+                        <li><a href="#">学习路径</a></li>
+                        <li><a href="#">常用工具</a></li>
+                        <li><a href="#">在线课程</a></li>
+                        <li><a href="#">技术论坛</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>关于</h3>
+                    <ul>
+                        <li><a href="about.html">关于知识库</a></li>
+                        <li><a href="contact.html">联系方式</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">使用条款</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 网络知识库. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

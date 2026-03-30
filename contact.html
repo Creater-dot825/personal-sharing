@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系 - 网络知识库</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html">网络知识库</a>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#software" class="nav-link">软件学习</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#knowledge" class="nav-link">相关知识</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#literature" class="nav-link">文献总结</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#practice" class="nav-link">实践指南</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">关于</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link active">联系</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <div class="theme-toggle">
+                    <button id="themeBtn" aria-label="切换主题">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 联系页面内容 -->
+    <main class="main-content">
+        <div class="container">
+            <div class="contact-page">
+                <div class="contact-header">
+                    <h1>联系我们</h1>
+                    <p>我们非常乐意听取您的意见！如果您有任何问题、建议或希望看到的内容，请随时通过以下方式联系我们。</p>
+                </div>
+
+                <div class="contact-content">
+                    <!-- 联系信息 -->
+                    <div class="contact-info">
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>电子邮箱</h3>
+                                <p><a href="mailto:hcyu.xidian@foxmail.com" style="color: var(--primary-color); text-decoration: none;">hcyu.xidian@foxmail.com</a></p>
+                                <p class="contact-note">我们通常会在 24 小时内回复</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>GitHub</h3>
+                                <p>github.com/networkkb</p>
+                                <p class="contact-note">参与项目和贡献</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>内容建议</h3>
+                                <p>欢迎提出新内容请求</p>
+                                <p class="contact-note">帮助我们完善知识库</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-bug"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>问题反馈</h3>
+                                <p>报告内容错误或问题</p>
+                                <p class="contact-note">帮助我们改进质量</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 联系表单 -->
+                    <div class="contact-form-container">
+                        <h2>发送消息</h2>
+                        <div style="text-align: center; padding: 3rem 1rem;">
+                            <div style="font-size: 1.2rem; margin-bottom: 1.5rem;">
+                                <i class="fas fa-envelope" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem; display: block;"></i>
+                                请通过邮件联系我们：
+                            </div>
+                            <a href="mailto:hcyu.xidian@foxmail.com" style="font-size: 1.5rem; color: var(--primary-color); text-decoration: none; font-weight: 600; display: inline-block; padding: 1rem 2rem; background-color: var(--bg-secondary); border-radius: var(--radius-md); border: 2px solid var(--primary-color); transition: all 0.3s ease;">
+                                hcyu.xidian@foxmail.com
+                            </a>
+                            <p style="margin-top: 1.5rem; color: var(--text-secondary); font-size: 0.95rem;">
+                                点击上方邮箱地址即可直接打开邮件客户端
+                            </p>
+                            <p style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem;">
+                                我们通常会在 24 小时内回复您的邮件
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 常见问题 -->
+                <div class="contact-faq">
+                    <h2>常见问题</h2>
+                    <div class="faq-accordion">
+                        <div class="faq-item">
+                            <button class="faq-question" id="faq1">
+                                <span>如何为知识库贡献内容？</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer" aria-labelledby="faq1">
+                                <p>我们欢迎社区贡献！您可以通过 GitHub 提交 Pull Request，或者通过邮件发送您的文章草稿。我们会审核后发布合适的内容。</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" id="faq2">
+                                <span>发现内容有错误怎么办？</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer" aria-labelledby="faq2">
+                                <p>如果您发现任何内容错误，请通过邮件或表单告知我们，我们会尽快核实并修正。感谢您帮助我们提高内容质量！</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" id="faq3">
+                                <span>可以请求添加特定主题的内容吗？</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer" aria-labelledby="faq3">
+                                <p>当然可以！我们非常重视用户的内容需求。请通过联系表单告诉我们您希望学习的主题，我们会优先考虑热门请求。</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" id="faq4">
+                                <span>知识库的内容可以用于教学吗？</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer" aria-labelledby="faq4">
+                                <p>是的！我们的内容可以自由用于个人学习和教学目的。请保留来源链接，不要用于商业用途。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <div class="footer-logo">
+                    <a href="index.html">网络知识库</a>
+                </div>
+                <p class="footer-description">网络技术学习与软件操作指南</p>
+                <div class="social-links">
+                    <a href="#" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>分类</h3>
+                    <ul>
+                        <li><a href="index.html#software">软件学习</a></li>
+                        <li><a href="index.html#knowledge">相关知识</a></li>
+                        <li><a href="index.html#literature">文献总结</a></li>
+                        <li><a href="index.html#practice">实践指南</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>资源</h3>
+                    <ul>
+                        <li><a href="#">学习路径</a></li>
+                        <li><a href="#">常用工具</a></li>
+                        <li><a href="#">在线课程</a></li>
+                        <li><a href="#">技术论坛</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>关于</h3>
+                    <ul>
+                        <li><a href="about.html">关于知识库</a></li>
+                        <li><a href="contact.html">联系方式</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">使用条款</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 网络知识库. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    <script>
+        // FAQ 折叠面板
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const isActive = answer.style.display === 'block';
+
+                // 关闭其他FAQ
+                document.querySelectorAll('.faq-answer').forEach(el => {
+                    el.style.display = 'none';
+                });
+                document.querySelectorAll('.faq-question').forEach(el => {
+                    el.classList.remove('active');
+                });
+
+                // 切换当前FAQ
+                if (!isActive) {
+                    answer.style.display = 'block';
+                    this.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
